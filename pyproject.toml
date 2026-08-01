@@ -5,31 +5,55 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "envguard"
 version = "0.1.0"
-description = "Static analysis and configuration intelligence for environment variables."
+description = "Static analysis and configuration intelligence for .env files."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
+license = "MIT"
+
 authors = [
     { name = "Sakthi Balamurugan" }
 ]
+
 keywords = [
     "python",
     "dotenv",
     "environment",
+    "env",
     "security",
     "static-analysis",
-    "cli"
+    "cli",
+    "developer-tools"
 ]
+
 classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent"
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development",
+    "Topic :: Security",
 ]
+dependencies = []
 
 [project.optional-dependencies]
 dev = [
-    "pytest"
+    "pytest>=8.0",
 ]
+
+[project.scripts]
+envguard = "envguard.cli:main"
+
+[tool.setuptools]
+packages = ["envguard"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+addopts = "-v"
